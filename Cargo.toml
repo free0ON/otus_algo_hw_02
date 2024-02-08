@@ -1,4 +1,3 @@
-workspace = { members = ["src/tickets"] }
 [package]
 name = "otus_algo_hw_02"
 version = "0.1.0"
