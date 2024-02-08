@@ -4,3 +4,6 @@
 /**
  * Google tests
  */
+TEST(tickets, test_compare) {
+    ASSERT_TRUE(true);
+}
