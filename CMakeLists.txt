@@ -46,20 +46,20 @@ target_link_libraries(${PRJ_NAME}
         )
 
 find_package(Threads REQUIRED)
-#find_package(GTest REQUIRED)
+find_package(GTest REQUIRED)
 
-# target_link_libraries(
-#         test_all
-#         PUBLIC
-#         gtest
-#         gtest_main
-#         version
-#         ${CMAKE_THREAD_LIBS_INIT}
-# )
+target_link_libraries(
+        test_all
+        PUBLIC
+        gtest
+        gtest_main
+        version
+        ${CMAKE_THREAD_LIBS_INIT}
+)
 
-# enable_testing()
-# include(GoogleTest)
-# add_test(test_all test_all)
+enable_testing()
+include(GoogleTest)
+add_test(test_all test_all)
 
 if (MSVC)
     target_compile_options(${PRJ_NAME}  PRIVATE  /W4)
