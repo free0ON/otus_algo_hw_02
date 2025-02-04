@@ -1,46 +1,57 @@
-class TicketNumber
+#include <math.h>
+#include <iostream>
+/// @brief 
+class Ticket
 {
     private:
-        int N;    
-        int Number = 0;
+    int N;
     public:
     
-    TicketNumber(int _N)
+    Ticket(int _N)
     {
-        N =_N;
+        N = _N;
     }
 
-    long GetSum()
+    long GetSumHappyTikets()
+    {
+        long Count = 0;
+        long max_num = pow(10,N);
+        for(long left = 0; left < max_num; left++)
+            for(long right = 0; right < max_num; right++)
+                if(GetSumTiketPart(left) == GetSumTiketPart(right)) Count++;
+    return Count;
+
+    }
+
+    long GetSumTiketPart(long TicketPart)
     {
         long Sum = 0;
-        int temp = Number;
-        for(int i = 0; i < N; ++i)
-        {
-            temp %= 10*(i + 1);
-            Sum += temp;
+        for (int i = N; i >= 0; i--) {
+            Sum += TicketPart % 10;
+            TicketPart /= 10;
         }
         return Sum;
     }
 
-    bool operator==(TicketNumber num)
-    {
-        return GetSum() == num.GetSum();
-    }
-
-    void operator++()
-    {
-        ++Number;
-    }
-
 }; 
 
-long CountHappyTickets(int N)
+long SumTicket(long TicketPart, int num)
+{
+    long Sum = 0;
+    for (int i = num; i >= 0; i--) {
+        Sum += TicketPart % 10;
+        TicketPart /= 10;
+    }
+    return Sum;
+}
+
+long CountHappyTickets(int num)
 {
     long Count = 0;
-    TicketNumber Left(N), Right(N);
-    for(int i = 0; i < N; ++i)
-    {
-        if (Left == Right) ++Count;
-    }
+    long max_num = pow(10,num);
+
+    for(long left = 0; left < max_num; left++)
+        for(long right = 0; right < max_num; right++)
+            if(SumTicket(left,num) == SumTicket(right,num)) Count++;
     return Count;
 }
