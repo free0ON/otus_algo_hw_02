@@ -11,7 +11,7 @@ TEST(tickets, test_all) {
     std::ifstream file;
     int in[10];
     long out[10];
-    std::string path = "../test/1.Tickets/test.";
+    std::string path = "1.Tickets/test.";
     for (size_t i = 0; i < 4; i++)
     {
         
