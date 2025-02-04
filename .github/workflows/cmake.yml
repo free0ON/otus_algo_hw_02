@@ -7,7 +7,7 @@ env:
   PRJ_VERSION_PATCH: ${{ github.run_number }}
   PRJ_DESCRIPTION: "happy_tikets_calculating" # description without spaces
   PRJ_HOMEPAGE_URL: "${{ github.server_url }}//${{ github.repository }}"
-  PRJ_CMAKE_MIN_VERSION: 3.2
+  PRJ_CMAKE_MIN_VERSION: 3.5
   EMAIL_CONTACT: dmitrii.lozovoi@yandex.ru
   GOOGLE_TEST: ON
   BUILD_TYPE: Release
