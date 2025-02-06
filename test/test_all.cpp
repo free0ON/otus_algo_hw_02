@@ -33,23 +33,23 @@ TEST(tickets, BrutTickets) {
 TEST(tickets, FastTickets) {
     std::string s = "";
     std::ifstream file;
-    int in[10];
-    unsigned long out[10];
+    int in;
+    unsigned long out;
     std::string path = "1.Tickets/test.";
     for (size_t i = 0; i < 10; i++)
     {
         file.open(path + std::to_string(i) + ".in" );
         getline(file, s);
-        in[i] = std::stol(s);
+        in = std::stol(s);
         file.close();
-        ASSERT_EQ(in[i],i+1) << s;
+        ASSERT_EQ(in,i+1) << s;
         s = "";
         file.open(path + std::to_string(i) + ".out" );
         getline(file, s);
-        out[i] = std::stol(s);
+        out = std::stol(s);
         file.close();
         s = "";
-        FastTickets Ftickets(in[i]);
-        ASSERT_EQ(Ftickets.GetHappyCount(),out[i]);
+        FastTickets Ftickets(in);
+        ASSERT_EQ(Ftickets.GetHappyCount(),out);
     }
 }
