@@ -1,19 +1,30 @@
 mod tickets;
 
-fn is_happy_ticket(ticket: u32) -> bool {
-    let digits: Vec<u32> = ticket.to_string().chars().map(|d| d.to_digit(10).unwrap()).collect();
-    let half = digits.len() / 2;
-    let sum_first_half: u32 = digits.iter().take(half).sum();
-    let sum_second_half: u32 = digits.iter().skip(half).sum();
-    sum_first_half == sum_second_half
-}
+use tickets::get_happy_count;
 
 fn main() {
-    let mut count = 0;
-    for ticket in 0..=999_999 {
-        if is_happy_ticket(ticket) {
-            count += 1;
+    for i in 5..=5
+    {
+        println!("Number of happy tickets: {} {}",i, get_happy_count(i));    
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn BrutTicketsTest()
+    {
+        let out:[u64; 5] = [10, 670, 55252, 4816030, 39581170420];
+        let mut count:u64 = 0;
+        let mut i: u32 = 1;
+        for count_out in out
+        {
+            count = get_happy_count(i);
+            println!("Number of happy tickets: {} {}",i, count);    
+            assert_eq!(count, count_out);
+            i += 1;
         }
     }
-    println!("Number of happy tickets: {}", count);
 }
