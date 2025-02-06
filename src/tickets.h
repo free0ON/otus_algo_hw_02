@@ -1,14 +1,14 @@
 #include <math.h>
 #include <iostream>
 #include <cassert>
-/// @brief 
+/// @brief Happy tickets count Brut force algiritm
 class BrutTickets
 {
     private:
         int N;
 
     public:
-      
+
     BrutTickets(int _N)
     {
         N = _N;
@@ -36,6 +36,7 @@ class BrutTickets
     }
 }; 
 
+/// @brief Happy tickets count Fast algoritm
 class FastTickets
 {
     private:
@@ -43,8 +44,6 @@ class FastTickets
         int SumsNumber;
         unsigned long* SumsArray;
     public:
-        FastTickets(int N);
-        ~FastTickets();
 
     FastTickets(int _N)
     {
