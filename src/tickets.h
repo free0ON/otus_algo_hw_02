@@ -54,11 +54,6 @@ class FastTickets
             SumsArray[i] = 0;
     }
 
-    ~FastTickets()
-    {
-        delete SumsArray;
-    }
-
 
     unsigned long GetSumNumber(unsigned long Number)
     {
