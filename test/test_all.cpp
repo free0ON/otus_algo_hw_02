@@ -12,7 +12,7 @@ TEST(tickets, BrutTickets) {
     int in[10];
     unsigned long out[10];
     std::string path = "1.Tickets/test.";
-    for (size_t i = 4; i < 5; i++)
+    for (size_t i = 0; i < 5; i++)
     {
         file.open(path + std::to_string(i) + ".in" );
         getline(file, s);
