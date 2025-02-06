@@ -1,57 +1,86 @@
 #include <math.h>
 #include <iostream>
+#include <cassert>
 /// @brief 
-class Ticket
+class BrutTickets
 {
     private:
-    int N;
+        int N;
+
     public:
-    
-    Ticket(int _N)
+      
+    BrutTickets(int _N)
     {
         N = _N;
     }
 
-    long GetSumHappyTikets()
+    unsigned long GetSumNumber(unsigned long Number)
     {
-        long Count = 0;
-        long max_num = pow(10,N);
-        for(long left = 0; left < max_num; left++)
-            for(long right = 0; right < max_num; right++)
-                if(GetSumTiketPart(left) == GetSumTiketPart(right)) Count++;
-    return Count;
-
-    }
-
-    long GetSumTiketPart(long TicketPart)
-    {
-        long Sum = 0;
+        unsigned long Sum = 0;
         for (int i = N; i >= 0; i--) {
-            Sum += TicketPart % 10;
-            TicketPart /= 10;
+            Sum += Number % 10;
+            Number /= 10;
         }
         return Sum;
     }
 
+    unsigned long GetHappyCount()
+    {
+        unsigned long Count = 0;
+        unsigned long MaxNum = pow(10,N);
+        for(unsigned long left = 0; left < MaxNum; left++)
+            for(unsigned long right = 0; right < MaxNum; right++)
+                if(GetSumNumber(left) == GetSumNumber(right)) Count++;
+    return Count;
+
+    }
 }; 
 
-long SumTicket(long TicketPart, int num)
+class FastTickets
 {
-    long Sum = 0;
-    for (int i = num; i >= 0; i--) {
-        Sum += TicketPart % 10;
-        TicketPart /= 10;
+    private:
+        int N;
+        int SumsNumber;
+        unsigned long* SumsArray;
+    public:
+        FastTickets(int N);
+        ~FastTickets();
+
+    FastTickets(int _N)
+    {
+        N = _N;
+        SumsNumber = N*9 + 1;
+        SumsArray = new unsigned long[SumsNumber];
+        for (int i = 0; i < SumsNumber; i++)
+            SumsArray[i] = 0;
     }
-    return Sum;
-}
 
-long CountHappyTickets(int num)
-{
-    long Count = 0;
-    long max_num = pow(10,num);
+    ~FastTickets()
+    {
+        delete SumsArray;
+    }
 
-    for(long left = 0; left < max_num; left++)
-        for(long right = 0; right < max_num; right++)
-            if(SumTicket(left,num) == SumTicket(right,num)) Count++;
-    return Count;
-}
+
+    unsigned long GetSumNumber(unsigned long Number)
+    {
+        unsigned long Sum = 0;
+            for (int i = N; i >= 0; i--) {
+                Sum += Number % 10;
+                Number /= 10;
+            }
+        return Sum;
+    }
+
+    unsigned long GetHappyCount(void)
+    {
+        unsigned long Count = 0;
+        unsigned long MaxNumber = pow(10,N);
+        for (unsigned long Number = 0; Number < MaxNumber; Number++)
+            SumsArray[GetSumNumber(Number)]++;
+
+        for (int i = 0; i < SumsNumber; i++)
+            Count += SumsArray[i] * SumsArray[i];
+    
+        return Count;
+    }
+};

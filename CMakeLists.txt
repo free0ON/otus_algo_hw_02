@@ -59,7 +59,9 @@ target_link_libraries(
 
 enable_testing()
 include(GoogleTest)
-add_test(tickets test_all)
+add_test(BrutTickets test_all)
+add_test(FastTickets test_all)
+
 
 if (MSVC)
     target_compile_options(${PRJ_NAME}  PRIVATE  /W4)
