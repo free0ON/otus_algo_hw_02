@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include <fstream> 
-#include "test_cpp_features.h"
 
 /**
  * Google tests
@@ -54,10 +53,4 @@ TEST(tickets, FastTickets) {
         FastTickets Ftickets(in);
         ASSERT_EQ(Ftickets.GetHappyCount(),out);
     }
-}
-
-TEST(static_dynamic_test, c_test)
-{
-    std::cout << dynamic_test() << std::endl;
-    //std::cout << static_test() << std::endl;
 }
