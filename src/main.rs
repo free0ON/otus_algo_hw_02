@@ -19,34 +19,51 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use std::fs;
 
+    use super::*;
+    //use std::num::ParseIntError;
+    
     #[test]
     fn brut_tickets_test()
     {
-        let out:[u64; 5] = [10, 670, 55252, 4816030, 432457640];
-        let mut count:u64 = 0;
-        let mut i: u32 = 1;
-        for count_out in out
+        let path: &str  = "1.Tickets/test";
+        for i in 0..5
         {
-            count = brut_get_happy_count(i);
-            println!("Brut count: {} {}",count_out, count);    
-            assert_eq!(count, count_out);
-            i += 1;
+            let input = fs::read_to_string(format!("{}.{}.in",path,i).as_str())
+                .expect("Should have been able to read the file")
+                .trim_end()
+                .parse()
+                .expect("Not a number");
+            let output = fs::read_to_string(format!("{}.{}.out",path,i).as_str())
+                .expect("Should have been able to read the file")
+                .trim_end()
+                .parse()
+                .expect("Not a number");
+            let count = brut_get_happy_count(input);
+            println!("Brut count: {}  {}",input, count);    
+            assert_eq!(count, output);
         }
     }
     #[test]
     fn fast_tickets_test()
     {
-        let out:[u64; 10] = [10, 670, 55252, 4816030, 432457640, 39581170420, 3671331273480, 343900019857310, 32458256583753952, 3081918923741896840];
-        let mut count:u64 = 0;
-        let mut i: u32 = 1;
-        for count_out in out
+        let path: &str  = "1.Tickets/test";
+        for i in 0..10
         {
-            count = fast_get_happy_count(i);
-            println!("Fast count: {} {}",i, count);    
-            assert_eq!(count, count_out);
-            i += 1;
+            let input = fs::read_to_string(format!("{}.{}.in",path,i).as_str())
+                .expect("Should have been able to read the file")
+                .trim_end()
+                .parse()
+                .expect("Not a number");
+            let output = fs::read_to_string(format!("{}.{}.out",path,i).as_str())
+                .expect("Should have been able to read the file")
+                .trim_end()
+                .parse()
+                .expect("Not a number");
+            let count = fast_get_happy_count(input);
+            println!("Fast count: {:<2}  {}",input, count);    
+            assert_eq!(count, output);
         }
     }
 

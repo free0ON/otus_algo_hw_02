@@ -25,6 +25,7 @@ set_target_properties(${PRJ_NAME}  version test_all PROPERTIES
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON
         )
+
 target_include_directories(${PRJ_NAME}
         PUBLIC
         "${CMAKE_BINARY_DIR}"
@@ -61,7 +62,7 @@ enable_testing()
 include(GoogleTest)
 add_test(BrutTickets test_all)
 add_test(FastTickets test_all)
-
+add_test(static_dynamic test_all)
 
 if (MSVC)
     target_compile_options(${PRJ_NAME}  PRIVATE  /W4)

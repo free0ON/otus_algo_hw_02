@@ -36,10 +36,9 @@ pub fn fast_get_happy_count(n: u32) -> u64
     let mut sums: Vec<u64> = Vec::new();
     sums.resize(sums_number, 0);
 
-    let mut index:usize = 0;
     for number in 0..max_num
     {
-        index = get_sum_number(number, n) as usize;
+        let index = get_sum_number(number, n) as usize;
         sums[index] += 1; 
     }
 
