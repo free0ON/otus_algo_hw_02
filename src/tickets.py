@@ -2,6 +2,7 @@ import unittest
 import numpy
 
 class TestTickets(unittest.TestCase):
+
     def test_brut_count(self):
         path = "1.Tickets/test."
         for i in range(4):
@@ -10,7 +11,7 @@ class TestTickets(unittest.TestCase):
             input = int(input_file.readline())
             output = numpy.uint64(output_file.readline())
             self.assertEqual(output,brut_get_happy_count(input))
-            print("Brut count: ", input, output,"\n")
+            print("Brut count: ", input, output)
             input_file.close()
             output_file.close()
 
@@ -22,7 +23,7 @@ class TestTickets(unittest.TestCase):
             input = int(input_file.readline())
             output = numpy.uint64(output_file.readline())
             self.assertEqual(output,fast_get_happy_count(input))
-            print("Fast count: ", input, output,"\n")
+            print("Fast count: ", input, output)
             input_file.close()
             output_file.close()
 
@@ -57,10 +58,15 @@ def fast_get_happy_count(n):
     for i in range(sums_number):
         count += sums[i] * sums[i]
     
-    print("Sum num: \n", sums_number)
-    print(sums)
+    # print("Sum num: \n", sums_number)
+    # print(sums)
 
     return count
 
+def test_suite():
+    suite = unittest.TestSuite()
+    suite.addTest(TestTickets('test_fast_count'))
+    return test_suite
+
 if __name__ == '__main__':
-    unittest.main()
+    unittest.TestProgram()
