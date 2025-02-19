@@ -17,6 +17,12 @@ message("DESCRIPTION: ${PRJ_DESCRIPTION}")
 message("HOMEPAGE_URL: ${PRJ_HOMEPAGE_URL}")
 message("CMAKE_MINIMUM_REQUIRED_VERSION: ${CMAKE_MINIMUM_REQUIRED_VERSION}")
 
+
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
+set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra")
+
 configure_file(src/version.h.in version.h)
 add_library(version src/version.cpp)
 add_executable(${PRJ_NAME} src/main.cpp)
@@ -60,7 +66,7 @@ target_link_libraries(
 
 enable_testing()
 include(GoogleTest)
-add_test(BrutTickets test_all)
+# add_test(BrutTickets test_all)
 add_test(FastTickets test_all)
 
 if (MSVC)

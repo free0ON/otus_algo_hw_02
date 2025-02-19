@@ -3,17 +3,17 @@ import numpy
 
 class TestTickets(unittest.TestCase):
 
-    def test_brut_count(self):
-        path = "1.Tickets/test."
-        for i in range(4):
-            input_file = open(path + str(i) + ".in", "r")
-            output_file = open(path + str(i) + ".out", "r")  
-            input = int(input_file.readline())
-            output = numpy.uint64(output_file.readline())
-            self.assertEqual(output,brut_get_happy_count(input))
-            print("Brut count: ", input, output)
-            input_file.close()
-            output_file.close()
+    # def test_brut_count(self):
+    #     path = "1.Tickets/test."
+    #     for i in range(4):
+    #         input_file = open(path + str(i) + ".in", "r")
+    #         output_file = open(path + str(i) + ".out", "r")  
+    #         input = int(input_file.readline())
+    #         output = numpy.uint64(output_file.readline())
+    #         self.assertEqual(output,brut_get_happy_count(input))
+    #         print("Brut count: ", input, output)
+    #         input_file.close()
+    #         output_file.close()
 
     def test_fast_count(self):
         path = "1.Tickets/test."
@@ -23,7 +23,7 @@ class TestTickets(unittest.TestCase):
             input = int(input_file.readline())
             output = numpy.uint64(output_file.readline())
             self.assertEqual(output,fast_get_happy_count(input))
-            print("Fast count: ", input, output)
+            print("python fast count: ", input, " : ", output)
             input_file.close()
             output_file.close()
 

@@ -115,7 +115,7 @@ int test_fast_get_happy_count(void)
         out = atol(out_str);
         fclose(file);
         long count = force_get_happy_count(in);
-        printf("fast count: %d  %lu \n", in, count);
+        printf("c fast count: %d  %lu \n", in, count);
         if ((in == i+1) && (count == out)) 
             result = 1;
         else 

@@ -2,6 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "tickets",
+            "request": "launch",
+            "mainClass": "tickets",
+            "projectName": "otus_algo_hw_02_480e879a"
+        },
+        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
