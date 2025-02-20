@@ -6,5 +6,4 @@ build
 target
 # Ignore Gradle project-specific cache directory
 .gradle
-gradle
 gradlew.bat
