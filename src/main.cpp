@@ -8,6 +8,21 @@
 /**
  * happy_tickets program OTUS algo hw 02
  */
+
+bool TestOut(unsigned long out, unsigned long count)
+{
+    if (out == count) 
+    {
+        std::cout << "Ok" << std::endl;
+        return true;
+    }
+    else 
+    {
+        std::cout << "Err" << std::endl;
+        return false;
+    }
+}
+
 int main() {
     std::string s = "";
     std::ifstream file;
@@ -32,18 +47,11 @@ int main() {
         s = "";
         FastTickets Ftickets(in);
         unsigned long count = Ftickets.GetHappyCount();
-        if (out == count) 
-        {
-            std::cout << "Ok" << std::endl;
-        }
-        else 
-        {
-            std::cout << "Err" << std::endl;
-        }
+        TestOut(out, count);
         std::cout << "cpp fast count: " << in << " : " << count << std::endl;
     }
     const auto end = std::chrono::steady_clock::now();
-    
+
     std::cout << "Time : " << (end - start) / 1s  << " sec" << std::endl;
     return 0;
 }

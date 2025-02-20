@@ -1,4 +1,4 @@
-name: CMake
+name: CMake CPP Build Test Deploy
 env:
  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   PRJ_NAME: "happy_tickets" # name without spaces
