@@ -14,9 +14,6 @@ int main() {
     int in;
     unsigned long out;
     using namespace std::literals;
-    //std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
-    const std::chrono::time_point<std::chrono::system_clock> now =
-    std::chrono::system_clock::now();
     const std::chrono::time_point<std::chrono::steady_clock> start =
         std::chrono::steady_clock::now();
 
@@ -27,7 +24,6 @@ int main() {
         getline(file, s);
         in = std::stol(s);
         file.close();
-        // ASSERT_EQ(in,i+1) << s;
         s = "";
         file.open(path + std::to_string(i) + ".out" );
         getline(file, s);
@@ -35,7 +31,15 @@ int main() {
         file.close();
         s = "";
         FastTickets Ftickets(in);
-        long count = Ftickets.GetHappyCount();
+        unsigned long count = Ftickets.GetHappyCount();
+        if (out == count) 
+        {
+            std::cout << "Ok" << std::endl;
+        }
+        else 
+        {
+            std::cout << "Err" << std::endl;
+        }
         std::cout << "cpp fast count: " << in << " : " << count << std::endl;
     }
     const auto end = std::chrono::steady_clock::now();
