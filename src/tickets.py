@@ -1,6 +1,9 @@
 import unittest
 import numpy
 
+# verfication email
+
+
 class TestTickets(unittest.TestCase):
 
     # def test_brut_count(self):
